@@ -32,4 +32,63 @@ public class RatingModel {
 	@JoinColumn(name="userid")
 	public UserModel usermodel;
 
+	public int getRatingid() {
+		return ratingid;
+	}
+
+	public void setRatingid(int ratingid) {
+		this.ratingid = ratingid;
+	}
+
+	public String getLikes() {
+		return likes;
+	}
+
+	public void setLikes(String likes) {
+		this.likes = likes;
+	}
+
+	public String getDislikes() {
+		return dislikes;
+	}
+
+	public void setDislikes(String dislikes) {
+		this.dislikes = dislikes;
+	}
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
+	}
+
+	public PicturesModel getPicturesModel() {
+		return picturesModel;
+	}
+
+	public void setPicturesModel(PicturesModel picturesModel) {
+		this.picturesModel = picturesModel;
+	}
+
+	public UserModel getUsermodel() {
+		return usermodel;
+	}
+
+	public void setUsermodel(UserModel usermodel) {
+		this.usermodel = usermodel;
+	}
+
+	
+	
+	
 }

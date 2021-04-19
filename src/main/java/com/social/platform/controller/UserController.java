@@ -1,14 +1,21 @@
 package com.social.platform.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.social.platform.dao.RatingRepository;
 import com.social.platform.dao.UserRepository;
@@ -20,6 +27,7 @@ import com.social.platform.service.ArtistService;
 import com.social.platform.service.UserService;
 
 @Controller
+@SessionAttributes("usermodel")
 public class UserController {
 	
 	@Autowired
@@ -43,11 +51,38 @@ public class UserController {
 		return "loginUsersuccess";
 	}
 	
+	@GetMapping("/home1")
+	public String homepage1(@RequestParam ("userid") String userid,Model model) {
+		UserModel um=userRepository.getOne(Integer.parseInt(userid));
+		model.addAttribute("usermodel", um);
+		return "loginsuccess";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		
+		HttpSession session= request.getSession(false);
+       
+        if(session != null) {
+            session.invalidate();
+        }
+		return "login";
+	}
+	
 	@GetMapping("/viewPictures")
-	public String viewPictures(Model model) {
+	public String viewPictures(Model model,@RequestParam("artist") String artist) {
 		
 		List<PicturesModel> pic=userService.getPictures();
-		model.addAttribute("pictures",pic);
+		
+		List<PicturesModel> pic2=new ArrayList<PicturesModel>();
+		for(PicturesModel pic1:pic) {
+			UserModel um=pic1.getUsermodel();
+			if(um.getSkillset().equalsIgnoreCase(artist)) {
+				pic2.add(pic1);
+			}
+		}
+		
+		model.addAttribute("pictures",pic2);
 		
 		return "viewPictures";
 	}
@@ -114,22 +149,16 @@ public class UserController {
 	
 	
 	@GetMapping("viewArtists")
-	public String viewArtists(@RequestParam("artist") String artist) {
-		
-		/*
-		 * System.out.println(artist); List<UserModel>
-		 * um2=userRepository.getBySkillset("painter"); for(UserModel um3:um2) {
-		 * System.out.println(um3.getEmailid()); }
-		 */
-		
+	public String viewArtists(@RequestParam("artist") String artist,Model model) {
 		
 		List<UserModel> um=artistService.userRoleService(artist);
 		
 		List<UserModel> um4=um.stream().filter(um1-> um1.getSkillset()!=null).collect(Collectors.toList());
 		
 		um4.stream().forEach(um5 -> System.out.println(um5.getEmailid()));
+		model.addAttribute("art",um4);
 		
-		return "view";
+		return "ViewArtisians";
 	}
 	
 	

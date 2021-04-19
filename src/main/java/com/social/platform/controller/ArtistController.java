@@ -81,8 +81,8 @@ public class ArtistController {
 
 		UserModel um = userRepository.getByNameAndPassword(uname, password);
 		
-		System.out.println(um.getRole()+"from db");
-		System.out.println(um.getRole()+"from form");
+	//	System.out.println(um.getRole()+"from db");
+	//	System.out.println(um.getRole()+"from form");
 
 		if (um == null) {
 			model.addAttribute("message", "error in login");
@@ -98,7 +98,7 @@ public class ArtistController {
 				return "loginUsersuccess";
 
 			} else if (um.getRole().equalsIgnoreCase(role)) {
-				return "loginadminsuccess";
+				return "loginsuccessadmin";
 			}
 
 			else {

@@ -30,6 +30,46 @@ public class PicturesModel {
 	
 	@OneToMany
 	public List<RatingModel> ratignModel;
+
+	public int getPicid() {
+		return picid;
+	}
+
+	public void setPicid(int picid) {
+		this.picid = picid;
+	}
+
+	public String getPicturepath() {
+		return picturepath;
+	}
+
+	public void setPicturepath(String picturepath) {
+		this.picturepath = picturepath;
+	}
+
+	public String getPictureName() {
+		return pictureName;
+	}
+
+	public void setPictureName(String pictureName) {
+		this.pictureName = pictureName;
+	}
+
+	public UserModel getUsermodel() {
+		return usermodel;
+	}
+
+	public void setUsermodel(UserModel usermodel) {
+		this.usermodel = usermodel;
+	}
+
+	public List<RatingModel> getRatignModel() {
+		return ratignModel;
+	}
+
+	public void setRatignModel(List<RatingModel> ratignModel) {
+		this.ratignModel = ratignModel;
+	}
 	
 	
 	
