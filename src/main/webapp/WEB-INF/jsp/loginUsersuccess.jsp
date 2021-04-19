@@ -14,7 +14,7 @@
 <div class="container">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">Social Platform</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -44,10 +44,10 @@
         </a>
        
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Crafts</a>
-          <a class="dropdown-item" href="#">Potory</a>
+           <a class="dropdown-item" href="viewPictures?artist=crafts">Crafts</a>
+          <a class="dropdown-item" href="viewPictures?artist=potory">Potory</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="viewPictures">Atrists</a>
+          <a class="dropdown-item" href="viewPictures?artist=painter">Atrists</a>
         </div>
       </li>
     </ul>
