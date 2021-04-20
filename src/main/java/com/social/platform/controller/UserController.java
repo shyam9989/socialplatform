@@ -70,7 +70,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/viewPictures")
-	public String viewPictures(Model model,@RequestParam("artist") String artist) {
+	public String viewPictures(Model model,@RequestParam("artist") String artist,
+			@RequestParam("user") String user
+			
+			) {
 		
 		List<PicturesModel> pic=userService.getPictures();
 		
@@ -83,8 +86,13 @@ public class UserController {
 		}
 		
 		model.addAttribute("pictures",pic2);
+		if(user.equalsIgnoreCase("user")) {
+			return "viewPictures";
+		}else {
+			return "viewAdminPictures";
+		}
 		
-		return "viewPictures";
+		
 	}
 	
 	
@@ -117,7 +125,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/review")
-	public String review(@RequestParam("picid") String picid,@RequestParam("userid") String userid,Model model) {
+	public String review(@RequestParam("picid") String picid,
+			@RequestParam("userid") String userid,
+			Model model
+			
+			) {
 		System.out.println("in review button");
 		PicturesModel pm=pictureRepository.getOne(Integer.parseInt(picid));
 		UserModel um= userRepository.getOne(Integer.parseInt(userid));
@@ -125,21 +137,28 @@ public class UserController {
 		 * RatingModel rm=new RatingModel(); rm.setDislikes("1");
 		 * rm.setPicturesModel(pm); rm.setUsermodel(um); ratingRepository.save(rm);
 		 */
+		/*RatingModel rm=new RatingModel();
+		rm.setReview(review);
+		rm.setPicturesModel(pm);
+		rm.setUsermodel(um);
+		ratingRepository.save(rm);*/
 		model.addAttribute("pic",pm);
 		model.addAttribute("usermodel",um);
 		return "addRatings";
 		
 	}
 	
+	
 	@PostMapping("/review1")
 	public String review1(@RequestParam("picid") String picid,@RequestParam("userid") String userid,Model model,
-			@RequestParam("stars") String stars
+			@RequestParam("stars") String stars,@RequestParam("review") String review
 			) {
 		System.out.println("in review button"+stars);
 		PicturesModel pm=pictureRepository.getOne(Integer.parseInt(picid));
 		UserModel um= userRepository.getOne(Integer.parseInt(userid));
 		RatingModel rm=new RatingModel();
 		rm.setRating(stars);
+		rm.setReview(review);
 		rm.setPicturesModel(pm);
 		rm.setUsermodel(um);
 		ratingRepository.save(rm);
@@ -149,7 +168,10 @@ public class UserController {
 	
 	
 	@GetMapping("viewArtists")
-	public String viewArtists(@RequestParam("artist") String artist,Model model) {
+	public String viewArtists(@RequestParam("artist") String artist,
+			Model model,
+			@RequestParam("user") String user
+			) {
 		
 		List<UserModel> um=artistService.userRoleService(artist);
 		
@@ -158,12 +180,19 @@ public class UserController {
 		um4.stream().forEach(um5 -> System.out.println(um5.getEmailid()));
 		model.addAttribute("art",um4);
 		model.addAttribute("user","userall");
+		if(user.equalsIgnoreCase("user")) {
 		return "ViewArtisians";
+		}else {
+			return "viewAdminArtisians";
+		}
 	}
 	
 
 	@GetMapping("viewArtist")
-	public String viewArtist(@RequestParam("artname") String artist,Model model) {
+	public String viewArtist(@RequestParam("artname") String artist,
+			Model model,
+			@RequestParam("user") String user
+			) {
 		
 		UserModel um=userRepository.findByName(artist);
 		
@@ -171,7 +200,11 @@ public class UserController {
 		model.addAttribute("art",um);
 		model.addAttribute("user","userone");
 		
-		return "ViewArtisians";
+		if(user.equalsIgnoreCase("user")) {
+			return "ViewArtisians";
+			}else {
+				return "viewAdminArtisians";
+			}
 	}
 	
 	

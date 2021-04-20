@@ -18,10 +18,10 @@
           View Artisians
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="viewArtists?artist=crafts">Crafts</a>
-          <a class="dropdown-item" href="viewArtists?artist=potory">Potory</a>
+          <a class="dropdown-item" href="viewArtists?artist=crafts&&user=admin">Crafts</a>
+          <a class="dropdown-item" href="viewArtists?artist=potory&&user=admin">Potory</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="viewArtists?artist=painter">Atrists</a>
+          <a class="dropdown-item" href="viewArtists?artist=painter&&user=admin">Atrists</a>
         </div>
       </li>
       <li class="nav-item  dropdown">
@@ -30,10 +30,10 @@
         </a>
        
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="viewPictures?artist=crafts">Crafts</a>
-          <a class="dropdown-item" href="viewPictures?artist=potory">Potory</a>
+          <a class="dropdown-item" href="viewPictures?artist=crafts&&user=admin">Crafts</a>
+          <a class="dropdown-item" href="viewPictures?artist=potory&&user=admin">Potory</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="viewPictures?artist=painter">Atrists</a>
+          <a class="dropdown-item" href="viewPictures?artist=painter&&user=admin">Atrists</a>
         </div>
       </li>
       <li class="nav-item  dropdown">

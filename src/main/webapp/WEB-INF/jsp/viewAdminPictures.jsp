@@ -12,8 +12,9 @@
            <input type="hidden" value="${pic.picid}" name="picid"/>
             <input type="button" value="like"/>
             </form> --%>
-            
-              <a href="viewAdminReview?picid=${pic.picid }">reviews</a>
+            <%-- <a href="like?picid=${pic.picid}&&userid=${usermodel.userid}">like</a> 
+             <a href="dislike?picid=${pic.picid}&&userid=${usermodel.userid}">dislike</a>
+              <a href="review?picid=${pic.picid}&&userid=${usermodel.userid}">review</a> --%>
            <!--  <form action="dislike" method="get">
             <input type="button" value="dislike"/>
             </form> -->

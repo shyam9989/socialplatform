@@ -1,10 +1,10 @@
 <%@ include file="common/header.jspf" %>
-<%@ include file="common/navigation.jspf" %>
+<%@ include file="common/adminnavigation.jspf" %>
 
 <br/><br/><br/>
 <div class="container">
  <form action="viewArtist" method="get">
- <input type="hidden" name="user" value="user"/>
+ <input type="hidden" name="user" value="admin"/>
 <input type="text" name="artname"/> <input type="submit" value="search" class="btn btn-success"/>
 </form>
 <br/>
