@@ -46,6 +46,8 @@ public class UserController {
 	ArtistService artistService;
 	
 	
+	
+	
 	@GetMapping("/home")
 	public String homepage() {
 		return "loginUsersuccess";

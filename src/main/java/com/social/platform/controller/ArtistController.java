@@ -46,6 +46,11 @@ public class ArtistController {
 	public String test() {
 		return "register";
 	}
+	
+	@RequestMapping("/")
+	public String test1() {
+		return "login";
+	}
 
 	@PostMapping("/registersubmit")
 	public String register(@RequestParam("username") String username, @RequestParam("emailid") String mailid,
@@ -79,7 +84,7 @@ public class ArtistController {
 	public String login(@RequestParam("username") String uname, @RequestParam("password") String password, Model model,
 			@RequestParam("role") String role) {
 
-		UserModel um = userRepository.getByNameAndPassword(uname, password);
+		UserModel um = userRepository.getByEmailidAndPassword(uname, password);
 		
 	//	System.out.println(um.getRole()+"from db");
 	//	System.out.println(um.getRole()+"from form");
