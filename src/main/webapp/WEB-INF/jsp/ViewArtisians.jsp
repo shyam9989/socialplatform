@@ -3,11 +3,36 @@
 
 <br/><br/><br/>
 <div class="container">
+ <form action="viewArtist" method="get">
+<input type="text" name="artname"/> <input type="submit" value="search" class="btn btn-success"/>
+</form>
+<br/>
+<c:set var="name" scope="application" value="${user}"/>
 
-<c:forEach var="artist" items="${art}">
-          
-        </c:forEach>
-<table border=1 class="table">
+<c:choose>
+    <c:when test="${user.equals('userone')}">
+       <table border=1 class="table">
+<tr>
+<td scope="col">Name</td>
+<td scope="col">Email Id</td>
+<td scope="col">Skill Set</td>
+<td scope="col">Description</td>
+
+</tr>
+
+          <tr>
+          <td>${art.name }</td>
+           <td>${art.emailid }</td>
+            <td>${art.skillset }</td>
+             <td>${art.myDescription }</td>
+          </tr>
+        
+</table>
+    </c:when>
+    <c:when test="${user.equals('userall')}">
+        
+        
+        <table border=1 class="table">
 <tr>
 <td scope="col">Name</td>
 <td scope="col">Email Id</td>
@@ -25,6 +50,24 @@
         </c:forEach>
 
 </table>
+        
+        
+        
+    </c:when>
+    <c:otherwise>
+       
+    </c:otherwise>
+</c:choose>
+
+
+
+
+
+<%-- <c:if test = "${name == 'userall'}">
+
+
+
+</c:if> --%>
 
 
 </div>

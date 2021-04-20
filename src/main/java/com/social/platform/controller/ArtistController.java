@@ -189,12 +189,13 @@ public class ArtistController {
 		return "description";
 	}
 	
-	@GetMapping("/viewProifle/{userid}")
-	public String viewProfile(@PathVariable String userid, Model model) {
+	@GetMapping("/viewProifle")
+	public String viewProfile(@RequestParam("userid") String userid, Model model) {
 
 		UserModel um=UserService.userProfileService(userid);
 		System.out.println(um.getEmailid());
 		model.addAttribute("usermodel",um);
+		
 		return "Profile";
 	}
 	

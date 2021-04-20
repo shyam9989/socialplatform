@@ -157,6 +157,19 @@ public class UserController {
 		
 		um4.stream().forEach(um5 -> System.out.println(um5.getEmailid()));
 		model.addAttribute("art",um4);
+		model.addAttribute("user","userall");
+		return "ViewArtisians";
+	}
+	
+
+	@GetMapping("viewArtist")
+	public String viewArtist(@RequestParam("artname") String artist,Model model) {
+		
+		UserModel um=userRepository.findByName(artist);
+		
+		
+		model.addAttribute("art",um);
+		model.addAttribute("user","userone");
 		
 		return "ViewArtisians";
 	}

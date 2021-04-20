@@ -12,6 +12,8 @@ public interface UserRepository extends JpaRepository<UserModel, Integer> {
 
 	List<UserModel> getBySkillset(String role1);
 
+	UserModel findByName(String artist);
+
 	
 
 }

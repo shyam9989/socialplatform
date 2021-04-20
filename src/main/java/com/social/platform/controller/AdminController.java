@@ -2,6 +2,7 @@ package com.social.platform.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
@@ -37,7 +38,9 @@ public class AdminController {
 			
 		}
 		
-		model.addAttribute("pictures",finalpics);
+		List<PicturesModel> deduped = finalpics.stream().distinct().collect(Collectors.toList());
+	
+		model.addAttribute("pictures",deduped);
 		
 		
 		return "viewRatings";

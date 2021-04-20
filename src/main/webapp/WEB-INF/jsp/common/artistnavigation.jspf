@@ -11,7 +11,7 @@
         <a class="nav-link" href="home1?userid=${usermodel.userid}">Home <span class="sr-only"></span></a>
       </li>
        <li class="nav-item ">
-        <a class="nav-link" href="/viewProifle/${usermodel.userid}">Profile <span class="sr-only"></span></a>
+        <a class="nav-link" href="/viewProifle/?userid=${usermodel.userid}">Profile <span class="sr-only"></span></a>
       </li>
        <li class="nav-item ">
         <a class="nav-link" href="addpaintform">Add painting <span class="sr-only"></span></a>
